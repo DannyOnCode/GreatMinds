@@ -5,7 +5,7 @@ const Dashboard: React.FC = () => {
     return (
         <div className="bg-cream min-h-screen font-display text-charcoal bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
             {/* Navigation Header */}
-            <nav className="w-full bg-white/80 backdrop-blur-md border-b-2 border-dashed border-paper-line p-6 flex justify-between items-center sticky top-0 z-50">
+            <nav className="w-full bg-white/80 backdrop-blur-md border-b-2 border-dashed border-paper-line h-20 p-4 flex justify-between items-center sticky top-0 z-50">
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-doodle-purple text-4xl">rocket_launch</span>
                     <h1 className="text-2xl font-bold text-doodle-purple tracking-tight">Great Minds Hub</h1>
@@ -13,12 +13,7 @@ const Dashboard: React.FC = () => {
 
                 <div className="flex gap-8 font-hand text-2xl">
                     {/* HOME is now highlighted purple with the underline */}
-                    <Link
-                        to="/dashboard"
-                        className="text-doodle-purple underline underline-offset-8 decoration-4"
-                    >
-                        Home
-                    </Link>
+                    <Link to="/dashboard" className="text-doodle-purple underline underline-offset-8 decoration-4">Home</Link>
 
                     {/* CALENDAR is now the secondary state */}
                     <Link

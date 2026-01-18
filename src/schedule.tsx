@@ -55,10 +55,10 @@ const Schedule: React.FC = () => {
     return (
         <div className="bg-cream min-h-screen font-display text-charcoal bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
             {/* Navigation Header - Matches Dashboard */}
-            <nav className="w-full bg-white/80 backdrop-blur-md border-b-2 border-dashed border-paper-line p-6 flex justify-between items-center sticky top-0 z-50">
+            <nav className="w-full bg-white/80 backdrop-blur-md border-b-2 border-dashed border-paper-line p-4 h-20 flex justify-between items-center sticky top-0 z-50">
                 <div className="flex items-center gap-2">
                     <span className="material-symbols-outlined text-doodle-purple text-4xl">spa</span>
-                    <h1 className="text-2xl font-bold text-doodle-purple tracking-tight">SeniorLife</h1>
+                    <h1 className="text-2xl font-bold text-doodle-purple tracking-tight">Great Minds Hub</h1>
                 </div>
 
                 <div className="flex gap-8 font-hand text-2xl">
