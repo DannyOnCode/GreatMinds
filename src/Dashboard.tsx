@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
                 <div className="flex gap-8 font-hand text-2xl">
                     {/* HOME is now highlighted purple with the underline */}
                     <Link
-                        to="/"
+                        to="/dashboard"
                         className="text-doodle-purple underline underline-offset-8 decoration-4"
                     >
                         Home
