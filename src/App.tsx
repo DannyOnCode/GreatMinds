@@ -1,37 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Login from "./Login";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './login.tsx';
+import Calendar from './calendar.tsx';
+import Dashboard from "./Dashboard.tsx";
+import Schedule from "./schedule.tsx";
+import AdminPanel from "./admin-panel.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-    return <Login />;
+    return (
+        <BrowserRouter>
+            <Routes>
+                {/* 1. The Landing Page (Login) */}
+                <Route path="/" element={<Login />} />
 
-  // return (
-  //   <>
-  //     <div>
-  //       <a href="https://vite.dev" target="_blank">
-  //         <img src={viteLogo} className="logo" alt="Vite logo" />
-  //       </a>
-  //       <a href="https://react.dev" target="_blank">
-  //         <img src={reactLogo} className="logo react" alt="React logo" />
-  //       </a>
-  //     </div>
-  //     <h1>Vite + React</h1>
-  //     <div className="card">
-  //       <button onClick={() => setCount((count) => count + 1)}>
-  //         count is {count}
-  //       </button>
-  //       <p>
-  //         Edit <code>src/App.tsx</code> and save to test HMR
-  //       </p>
-  //     </div>
-  //     <p className="read-the-docs">
-  //       Click on the Vite and React logos to learn more
-  //     </p>
-  //   </>
-  // )
+                {/* 2. The Dashboard (Change path from "/" to "/dashboard") */}
+                <Route path="/dashboard" element={<Dashboard />} />
+
+                {/* 3. The Calendar */}
+                <Route path="/calendar" element={<Calendar />} />
+
+                {/* 4. The Schedule */}
+                <Route path="/schedule" element={<Schedule />} />
+
+                <Route path="/admin-panel" element={<AdminPanel />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;

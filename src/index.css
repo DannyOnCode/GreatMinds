@@ -1,68 +1,42 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@theme {
+    /* This defines your missing font-display and font-hand */
+    --font-display: "Fredoka", sans-serif;
+    --font-hand: "Patrick Hand", cursive;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    /* This defines your custom doodle colors */
+    --color-doodle-purple: #6a67ce;
+    --color-doodle-teal: #4ecdc4;
+    --color-doodle-red: #ff6b6b;
+    --color-doodle-yellow: #ffeead;
+    --color-cream: #fdfbf7;
+    --color-cream-dark: #f2f0e9;
+    --color-charcoal: #4a4a4a;
+    --color-paper-line: #dadada;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+    /* This defines your blocky shadows */
+    --shadow-doodle: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* Base Styles */
+@layer base {
+    body {
+        background-color: var(--color-cream);
+        background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        @apply font-display text-charcoal;
+    }
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Custom Grid Classes */
+.grid-dashed td {
+    border-right: 2px dashed #eee;
+    border-bottom: 2px dashed #eee;
 }
+.grid-dashed td:last-child { border-right: none; }
+.grid-dashed tr:last-child td { border-bottom: none; }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.calendar-cell {
+    min-height: 150px;
+    transition: all 0.2s ease;
 }
