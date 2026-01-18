@@ -7,13 +7,17 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
+                {/* 1. The Landing Page (Login) */}
                 <Route path="/" element={<Login />} />
-                <Route path="/" element={<Dashboard />} />
+
+                {/* 2. The Dashboard (Change path from "/" to "/dashboard") */}
+                <Route path="/dashboard" element={<Dashboard />} />
+
+                {/* 3. The Calendar */}
                 <Route path="/calendar" element={<Calendar />} />
             </Routes>
         </BrowserRouter>
     );
 }
-
 
 export default App;
