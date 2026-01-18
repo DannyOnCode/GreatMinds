@@ -27,6 +27,13 @@ const Dashboard: React.FC = () => {
                     >
                         Calendar
                     </Link>
+
+                    <Link
+                        to="/schedule "
+                        className="text-charcoal hover:text-doodle-teal transition-colors"
+                    >
+                        Schedule
+                    </Link>
                 </div>
             </nav>
 
@@ -56,8 +63,8 @@ const Dashboard: React.FC = () => {
                         </div>
                     </Link>
 
-                    {/* My Schedule Card - Points to /dashboard (or wherever you manage tasks) */}
-                    <Link to="/dashboard" className="group bg-white p-8 rounded-[3rem] border-2 border-paper-line shadow-doodle hover:shadow-doodle-hover hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+                    {/* My Schedule Card - Points to /schedule (or wherever you manage tasks) */}
+                    <Link to="/schedule" className="group bg-white p-8 rounded-[3rem] border-2 border-paper-line shadow-doodle hover:shadow-doodle-hover hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-doodle-teal/10 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110" />
                         <span className="material-symbols-outlined text-6xl text-doodle-teal mb-4">assignment_turned_in</span>
                         <h3 className="text-3xl font-bold mb-2">My Schedule</h3>

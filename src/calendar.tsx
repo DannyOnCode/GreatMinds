@@ -19,11 +19,21 @@ const Calendar: React.FC = () => {
                             </div>
                             <h2 className="text-2xl font-bold tracking-wide text-doodle-purple">Activity Hub</h2>
                         </div>
-                        <div className="flex items-center gap-8">
-                            <nav className="hidden md:flex items-center gap-6">
-                                <Link to="/dashboard" className="text-charcoal hover:text-doodle-teal font-medium text-lg transition-colors font-hand text-xl">Home</Link>
-                                <Link to="/calendar" className="text-doodle-purple font-bold text-lg border-b-4 border-doodle-purple pb-0.5">Calendar</Link>
-                            </nav>
+                        <div className="flex gap-8 font-hand text-2xl">
+                            {/* HOME LINK */}
+                            <Link to="/dashboard" className="text-charcoal hover:text-doodle-purple transition-colors">
+                                Home
+                            </Link>
+
+                            {/* CALENDAR LINK - Make sure it matches these classes */}
+                            <Link to="/calendar" className="text-doodle-purple underline underline-offset-8 decoration-4">
+                                Calendar
+                            </Link>
+
+                            {/* ACTIVE LINK (My Activities) */}
+                            <Link to="/schedule" className="text-charcoal hover:text-doodle-purple transition-colors">
+                                Schedule
+                            </Link>
                             <button
                                 onClick={() => setShowConflict(true)}
                                 className="flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-cream-dark hover:bg-doodle-yellow text-charcoal transition-all shadow-sm hover:shadow-doodle"

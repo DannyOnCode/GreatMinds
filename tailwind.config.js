@@ -7,18 +7,32 @@ export default {
     theme: {
         extend: {
             colors: {
-                "cream": "#FDFBF7",
-                "cream-dark": "#F2F0E9",
-                "doodle-purple": "#6A67CE",
-                "doodle-teal": "#4ECDC4",
-                "doodle-red": "#FF6B6B",
-                "charcoal": "#4A4A4A",
-                "ink": "#2D3436",
-                "paper-line": "#DADADA",
+                // Core Brand Colors
+                "primary": "#6B5B95",          // Deep Purple
+                "primary-light": "#E0D7EC",    // Soft Lavender
+                "secondary": "#FF8C64",        // Warm Coral/Orange
+
+                // Accent Colors
+                "accent-yellow": "#FFD93D",    // Bright Sunny Yellow
+                "accent-green": "#88D8B0",     // Minty Green
+
+                // UI & Background Colors
+                "background-cream": "#FFFDF5", // Off-white Paper
+                "card-light": "#ffffff",       // Pure White
+                "card-dark": "#2D2D2D",        // Soft Charcoal for Dark Mode
+                "text-dark": "#4A4063",        // Dark Muted Purple (Easier on eyes than black)
+                "text-light": "#f1f3f3",       // Off-white text
+
+                // Doodle Palette
+                "doodle-purple": "#6B5B95",
+                "doodle-teal": "#88D8B0",
+                "doodle-orange": "#FF8C64",
+                "doodle-yellow": "#FFD93D",
             },
             fontFamily: {
                 "display": ["Fredoka", "sans-serif"],
-                "hand": ["Patrick Hand", "cursive"],
+                "body": ["Nunito", "sans-serif"],
+                "hand": ["'Gochi Hand'", "cursive"],
             },
             boxShadow: {
                 "doodle": "4px 4px 0px 0px rgba(0,0,0,0.1)",
