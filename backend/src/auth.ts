@@ -28,7 +28,7 @@ router.post("/login/staff", async (req, res) => {
     const { email, password } = req.body;
 
     const staff = users.find(
-        u => u.phone === email && u.role === "staff"
+        u => u.email === email && u.role === "staff"
     );
 
     if (!staff || !staff.passwordHash) {
@@ -40,7 +40,7 @@ router.post("/login/staff", async (req, res) => {
         return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    res.json({ role: "staff", phone: staff.phone });
+    res.json({ role: "staff", phone: staff.email });
 });
 
 export default router;
