@@ -16,36 +16,45 @@ const Login: React.FC = () => {
     ) => {
         e.preventDefault();
 
-        const url =
-            type === "user"
-                ? "http://localhost:3001/login/user"
-                : "http://localhost:3001/login/staff";
-
-        const body =
-            type === "user"
-                ? { phone: phone }
-                : { email: email, password: password };
-
-        try {
-            const res = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(body),
-            });
-
-            const data = await res.json();
-
-            // if (!res.ok) {
-            //     setError(data.error || "Login failed");
-            //     return;
-            // }
-            }
-            
-            navigate("/dashboard");
-
-        } catch {
-            setError("Server not reachable");
-
+        // const url =
+        //     type === "user"
+        //         ? "http://localhost:3001/login/user"
+        //         : "http://localhost:3001/login/staff";
+        //
+        // const body =
+        //     type === "user"
+        //         ? { phone: phone }
+        //         : { email: email, password: password };
+        //
+        // try {
+        //     const res = await fetch(url, {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(body),
+        //     });
+        //
+        //     const data = await res.json();
+        //
+        //     if (!res.ok) {
+        //         setError(data.error || "Login failed");
+        //         return;
+        //     }
+        //
+        //     if (type == "staff") {
+        //         navigate("/adminCalender");
+        //     } else if (type == "user") {
+        //         navigate("/calendar");
+        //     }
+        //
+        //
+        // } catch {
+        //     setError("Server not reachable");
+        //
+        // }
+        if (type == "staff") {
+            navigate("/adminCalender");
+        } else if (type == "user") {
+            navigate("/calendar");
         }
     };
 
