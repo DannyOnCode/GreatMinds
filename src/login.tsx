@@ -52,7 +52,7 @@ const Login: React.FC = () => {
         //
         // }
         if (type == "staff") {
-            navigate("/adminCalender");
+            navigate("/adminCalendar");
         } else if (type == "user") {
             navigate("/calendar");
         }
