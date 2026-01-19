@@ -35,9 +35,10 @@ const Login: React.FC = () => {
 
             const data = await res.json();
 
-            if (!res.ok) {
-                setError(data.error || "Login failed");
-                return;
+            // if (!res.ok) {
+            //     setError(data.error || "Login failed");
+            //     return;
+            // }
             }
             
             navigate("/dashboard");
