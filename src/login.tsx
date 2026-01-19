@@ -4,20 +4,50 @@ import { useNavigate } from 'react-router-dom';
 const Login: React.FC = () => {
     // 1. We need state to track the email for the Standard/Admin side
     const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     // 2. The new "Smart" Login function
-    const handleLogin = (e: React.FormEvent, type: 'elderly' | 'standard') => {
+    const handleLogin = async (
+        e: React.FormEvent,
+        type: "user" | "staff"
+    ) => {
         e.preventDefault();
 
-        if (type === 'standard' && email === 'admin@seniorlife.com') {
-            // Send to Editorial/Admin Page
-            navigate('/admin-panel');
-        } else {
-            // Everyone else goes to the normal Hub
-            navigate('/dashboard');
+        const url =
+            type === "user"
+                ? "http://localhost:3001/login/user"
+                : "http://localhost:3001/login/staff";
+
+        const body =
+            type === "user"
+                ? { phone: phone }
+                : { email: email, password: password };
+
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                setError(data.error || "Login failed");
+                return;
+            }
+            
+            navigate("/dashboard");
+
+        } catch {
+            setError("Server not reachable");
+
         }
     };
+
 
     return (
         <div className="min-h-screen bg-cream font-display flex items-center justify-center p-6 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
@@ -29,12 +59,14 @@ const Login: React.FC = () => {
                         <h2 className="text-4xl font-bold font-display text-charcoal mb-4">Quick Login 👴</h2>
                         <p className="text-xl font-hand text-charcoal/70 mb-8">Enter your phone number to start!</p>
 
-                        <form onSubmit={(e) => handleLogin(e, 'elderly')} className="space-y-6">
+                        <form onSubmit={(e) => handleLogin(e, 'user')} className="space-y-6">
                             <div>
                                 <label className="block text-xl font-hand mb-2 text-doodle-purple">Phone Number</label>
                                 <input
                                     type="tel"
                                     required
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                     className="w-full border-4 border-paper-line rounded-2xl p-4 text-xl focus:border-doodle-purple outline-none"
                                     placeholder="012 345 6789"
                                 />
@@ -55,7 +87,7 @@ const Login: React.FC = () => {
                         <h2 className="text-4xl font-bold font-display text-charcoal mb-4">Staff Login 🔑</h2>
                         <p className="text-xl font-hand text-charcoal/60 mb-8">For volunteers and administrators.</p>
 
-                        <form onSubmit={(e) => handleLogin(e, 'standard')} className="space-y-6">
+                        <form onSubmit={(e) => handleLogin(e, 'staff')} className="space-y-6">
                             <div>
                                 <label className="block text-xl font-hand mb-2">Email Address</label>
                                 <input
@@ -72,6 +104,8 @@ const Login: React.FC = () => {
                                 <input
                                     type="password"
                                     required
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className="w-full border-2 border-paper-line rounded-xl p-3 text-xl focus:border-doodle-teal outline-none"
                                     placeholder="••••••••"
                                 />
