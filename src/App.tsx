@@ -3,7 +3,8 @@ import Login from './login.tsx';
 import Calendar from './calendar.tsx';
 import Dashboard from "./Dashboard.tsx";
 import Schedule from "./schedule.tsx";
-import AdminPanel from "./admin-panel.tsx";
+import AdminCalendar from "./adminCalender.tsx";
+import AdminSchedule from "./adminSchedule.tsx";
 
 function App() {
     return (
@@ -21,10 +22,9 @@ function App() {
                 {/* 4. The Schedule */}
                 <Route path="/schedule" element={<Schedule />} />
 
-                {/* 3. The Admin Calendar */}
-                <Route path="/admincalendar" element={<Calendar />} />
+                <Route path="/adminCalendar" element={<AdminCalendar />} />
 
-                <Route path="/admin-panel" element={<AdminPanel />} />
+                <Route path = "/adminSchedule" element={<AdminSchedule />} />
             </Routes>
         </BrowserRouter>
     );
