@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 interface Activity {
@@ -12,10 +12,12 @@ interface Activity {
     location: string;
     attendee?: string;
     doodleColor: string; // Updated to match your theme colors
+    signupLimit: string;
+    contactNumber: string;
 }
 
 const AdminSchedule: React.FC = () => {
-    const activities: Activity[] = [
+    const [activities, setActivities] = useState<Activity[]>([
         {
             id: 1,
             title: "Watercolor Painting",
@@ -25,7 +27,9 @@ const AdminSchedule: React.FC = () => {
             weekday: "Mon",
             time: "10:00 AM - 11:30 AM",
             location: "Community Hall, Room 4",
-            doodleColor: "border-doodle-purple bg-doodle-purple/10 text-doodle-purple"
+            doodleColor: "border-doodle-purple bg-doodle-purple/10 text-doodle-purple",
+            signupLimit: "50",
+            contactNumber: "1923094214"
         },
         {
             id: 2,
@@ -36,7 +40,9 @@ const AdminSchedule: React.FC = () => {
             weekday: "Wed",
             time: "02:00 PM - 03:00 PM",
             location: "Activity Center, Room 3B",
-            doodleColor: "border-doodle-teal bg-doodle-teal/10 text-doodle-teal"
+            doodleColor: "border-doodle-teal bg-doodle-teal/10 text-doodle-teal",
+            signupLimit: "50",
+            contactNumber: "1923094214"
         },
         {
             id: 3,
@@ -48,9 +54,45 @@ const AdminSchedule: React.FC = () => {
             time: "09:00 AM - 10:00 AM",
             location: "Riverside Park Entrance",
             attendee: "Martha",
-            doodleColor: "border-doodle-orange bg-doodle-orange/10 text-[#A64B2A]"
+            doodleColor: "border-doodle-orange bg-doodle-orange/10 text-[#A64B2A]",
+            signupLimit: "50",
+            contactNumber: "1923094214"
         }
-    ];
+    ]);
+    const [Title, setTitle] = useState("");
+    const [Emoji, setEmoji] = useState("");
+    const [Time, setTime] = useState("");
+    const [Location, setLocation] = useState("");
+    const [ContactNumber, setContactNumber] = useState("");
+    const [SignupLimit, setSignupLimit] = useState("");
+    const handleAddActivity = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const today = new Date();
+
+        const newActivity: Activity = {
+            id: activities.length + 1, // simple incremental ID
+            title: Title,
+            emoji: Emoji,
+            month: today.toLocaleString('default', { month: 'long' }),
+            day: today.getDate().toString(),
+            weekday: today.toLocaleString('default', { weekday: 'short' }),
+            time: Time,
+            location: Location,
+            doodleColor: "bg-doodle-yellow",
+            signupLimit: SignupLimit,
+            contactNumber: ContactNumber,
+        };
+
+        setActivities([...activities, newActivity]);
+        // Reset values
+        setTitle("");
+        setEmoji("");
+        setTime("");
+        setLocation("");
+        setContactNumber("");
+        setSignupLimit("");
+    };
 
     return (
         <div className="bg-cream min-h-screen font-display text-charcoal bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]">
@@ -74,12 +116,69 @@ const AdminSchedule: React.FC = () => {
                     <div className="inline-block bg-doodle-yellow px-4 py-1 rounded-full border-2 border-charcoal mb-4 rotate-2 shadow-doodle">
                         <span className="font-hand text-xl font-bold">Upcoming Fun! 👋</span>
                     </div>
-                    <h2 className="text-5xl font-bold text-ink mb-2">My Signed Up Activities</h2>
+                    <h2 className="text-5xl font-bold text-ink mb-2">Manage activities</h2>
                     <p className="font-hand text-2xl text-charcoal/70">Here is what you have planned for the week.</p>
                 </header>
 
                 {/* Activity List */}
                 <div className="space-y-8">
+                    {/* Add new activity */}
+                    <form onSubmit={handleAddActivity} className="space-y-6">
+                        <input
+                            type="text"
+                            required
+                            value={Title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder="Activity Title"
+                            className="w-full border-2 border-paper-line rounded-xl p-3 text-xl outline-none"
+                        />
+                        <input
+                            type="text"
+                            required
+                            value={Emoji}
+                            onChange={(e) => setEmoji(e.target.value)}
+                            placeholder="Emoji"
+                            className="w-full border-2 border-paper-line rounded-xl p-3 text-xl outline-none"
+                        />
+                        <input
+                            type="text"
+                            required
+                            value={Time}
+                            onChange={(e) => setTime(e.target.value)}
+                            placeholder="Time"
+                            className="w-full border-2 border-paper-line rounded-xl p-3 text-xl outline-none"
+                        />
+                        <input
+                            type="text"
+                            required
+                            value={Location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            placeholder="Location"
+                            className="w-full border-2 border-paper-line rounded-xl p-3 text-xl outline-none"
+                        />
+                        <input
+                            type="text"
+                            required
+                            value={ContactNumber}
+                            onChange={(e) => setContactNumber(e.target.value)}
+                            placeholder="Organiser's Contact Number"
+                            className="w-full border-2 border-paper-line rounded-xl p-3 text-xl outline-none"
+                        />
+                        <input
+                            type="text"
+                            required
+                            value={SignupLimit}
+                            onChange={(e) => setSignupLimit(e.target.value)}
+                            placeholder="Sign-up Limit"
+                            className="w-full border-2 border-paper-line rounded-xl p-3 text-xl outline-none"
+                        />
+                        <button
+                            type="submit"
+                            className="w-full bg-doodle-purple text-white font-bold font-hand py-4 rounded-2xl shadow-doodle hover:translate-y-1 transition-all text-xl"
+                        >
+                            Add Activity
+                        </button>
+                    </form>
                     {activities.map((activity) => (
                         <article
                             key={activity.id}
@@ -108,6 +207,10 @@ const AdminSchedule: React.FC = () => {
                                         <div className="flex items-center gap-2">
                                             <span className="material-symbols-outlined text-doodle-teal">location_on</span>
                                             {activity.location}
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="material-symbols-outlined text-doodle-teal">phone</span>
+                                            {activity.contactNumber}
                                         </div>
                                     </div>
                                     {activity.attendee && (
