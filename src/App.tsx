@@ -21,6 +21,9 @@ function App() {
                 {/* 4. The Schedule */}
                 <Route path="/schedule" element={<Schedule />} />
 
+                {/* 3. The Admin Calendar */}
+                <Route path="/admincalendar" element={<Calendar />} />
+
                 <Route path="/admin-panel" element={<AdminPanel />} />
             </Routes>
         </BrowserRouter>
