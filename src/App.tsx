@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard.tsx";
 import Schedule from "./schedule.tsx";
 import AdminCalendar from "./adminCalender.tsx";
 import AdminSchedule from "./adminSchedule.tsx";
+import AdminAttendance from "./adminAttendance.tsx";
 
 function App() {
     return (
@@ -25,6 +26,8 @@ function App() {
                 <Route path="/adminCalendar" element={<AdminCalendar />} />
 
                 <Route path = "/adminSchedule" element={<AdminSchedule />} />
+
+                <Route path = "/adminAttendance" element={<AdminAttendance />} />
             </Routes>
         </BrowserRouter>
     );

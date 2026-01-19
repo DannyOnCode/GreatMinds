@@ -62,9 +62,9 @@ const AdminSchedule: React.FC = () => {
                 </div>
 
                 <div className="flex gap-8 font-hand text-2xl">
-                    <Link to="/dashboard" className="text-charcoal hover:text-doodle-purple transition-colors">Home</Link>
-                    <Link to="/adminCalendar" className="text-charcoal hover:text-doodle-purple transition-colors">AdminCalendar</Link>
+                    <Link to="/adminCalendar" className="text-charcoal hover:text-doodle-teal transition-colors">AdminCalendar</Link>
                     <Link to="/adminSchedule" className="text-doodle-purple underline underline-offset-8 decoration-4">AdminSchedule</Link>
+                    <Link to="/adminAttendance" className="text-charcoal hover:text-doodle-teal transition-colors">AdminAttendance</Link>
                 </div>
             </nav>
 
